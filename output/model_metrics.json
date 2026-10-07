@@ -1,0 +1,15 @@
+{
+  "regression": {
+    "RMSE": 8239.31,
+    "MAE": 6106.87,
+    "R2": 0.4119,
+    "MAPE": 218.34
+  },
+  "classification": {
+    "Accuracy": 0.7308,
+    "Precision": 0.2666,
+    "Recall": 0.4209,
+    "F1": 0.3264,
+    "AUC": 0.6834
+  }
+}

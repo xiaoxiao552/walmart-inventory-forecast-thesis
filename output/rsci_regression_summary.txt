@@ -1,0 +1,13 @@
+RSCI Validity Regression (OLS by sklearn + scipy)
+R-squared: 0.0208
+Adj R-squared: 0.0208
+F-statistic: 684.42
+
+Variable              Coef          t          p
+const           131157.7323    49.8723     0.0000
+RSCI_monthly    -1478.0873   -41.9622     0.0000
+IsHoliday        2185.5842    31.5907     0.0000
+Temperature       -16.7174   -14.0705     0.0000
+Fuel_Price       -264.1618    -6.9012     0.0000
+CPI              -501.1942   -44.8311     0.0000
+Unemployment    -1526.3580   -40.2427     0.0000

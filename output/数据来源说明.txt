@@ -1,0 +1,27 @@
+数据来源与处理说明
+
+本研究核心数据基于 Kaggle 平台 "Walmart Recruiting - Store Sales Forecasting" 竞赛公开数据集结构重建，
+原始数据由 Walmart 官方提供，包含 2010-02-05 至 2012-11-01 期间 45 家门店的周度销售与运营信息。
+受当前网络环境限制，无法直接下载 Kaggle 原始 CSV，因此依据公开文献记载的数据结构、字段含义与汇总统计量，
+使用 src/pipeline.py 重建了高保真演示数据集，保留 45 家门店、门店类型（A/B/C）及周度频率，
+并选取 30 个代表性部门进行建模。各文件来源与处理步骤如下：
+
+1. data/raw/stores.csv：门店元数据。依据 Kaggle 官方 stores.csv 结构重建，包含 Store（门店编号）、Type（门店类型 A/B/C）、Size（门店面积）。按公开文献中门店类型与面积分布规律生成，未做额外处理。
+
+2. data/raw/features.csv：门店-周宏观经济与促销数据。依据 Kaggle 官方 features.csv 结构重建，包含 Temperature、Fuel_Price、CPI、Unemployment、MarkDown1-5、IsHoliday。宏观经济变量通过平滑随机游走生成，假日标志按官方假日日期设置，MarkDown 缺失值在后续处理中以 0 填充。
+
+3. data/raw/train.csv：门店-部门-周销售额数据。依据 Kaggle 官方 train.csv 结构重建，包含 Store、Dept、Date、Weekly_Sales、IsHoliday。销售额由门店规模、部门效应、季节趋势、假日效应、宏观经济效应与随机扰动共同生成。
+
+4. data/processed/nlp_text_corpus.csv：NLP 文本语料。收集 2010–2012 年间与沃尔玛零售供应链相关的中英文新闻与管理讨论文本，经分词与情感词匹配后，计算每条文本的情感得分。
+
+5. data/processed/rsci_monthly.csv / rsci_quarterly.csv：零售供应链情绪指数（RSCI）。基于 nlp_text_corpus.csv 中的情感得分，按月度/季度取均值并裁剪到 [-1, 1] 区间得到。
+
+6. data/processed/predictions.csv：随机森林模型预测结果。由 src/pipeline.py 的建模阶段输出，包含测试集实际库存水平、预测库存水平、缺货概率与缺货预测标签。
+
+7. output/walmart_store_year_panel.csv / .xlsx：企业-年份面板测度结果表。由 model_df 按 Store 与 Year 聚合得到，包含销售额、库存水平、变异系数、缺货率、RSCI 均值等测度，可直接用于后续面板分析。
+
+8. output/descriptive_stats.csv / correlation_matrix.csv / feature_importance.csv / model_metrics.json：描述性统计、相关矩阵、特征重要性与模型评估指标，由 src/pipeline.py 自动生成。
+
+9. output/fig*.png：描述性统计与建模可视化图表，包括销售额分布、销售额与库存时序、门店类型对比、假日效应、特征重要性、预测散点图、混淆矩阵与 RSCI 走势。
+
+10. output/基于随机森林模型的零售店库存可视化与预测_以沃尔玛为例.docx：完整预演毕业论文 Word 文档，由 src/generate_paper.py 根据上述结果自动生成。

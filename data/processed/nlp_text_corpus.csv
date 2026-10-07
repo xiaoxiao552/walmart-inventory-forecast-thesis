@@ -1,0 +1,15 @@
+date,text,lang,sentiment_raw,year,month,quarter
+2010-03-15,Walmart reports strong same-store sales growth and expands grocery pickup.,en,1.0,2010,3,1
+2010-05-20,零售需求回暖，沃尔玛在部分地区出现缺货风险但总体库存可控。,zh,-1.0,2010,5,2
+2010-08-10,"Fuel prices rise, logistics costs pressure retail margins.",en,0.0,2010,8,3
+2010-11-25,感恩节促销推动销售强劲增长，库存周转率显著提升。,zh,1.0,2010,11,4
+2011-02-11,"Super Bowl promotions drive sales up, supply chain remains stable.",en,1.0,2011,2,1
+2011-06-15,消费者支出放缓，部分季节性商品出现库存积压。,zh,-1.0,2011,6,2
+2011-09-09,Labor Day events boost traffic; Walmart tightens inventory control.,en,0.0,2011,9,3
+2011-11-25,"Black Friday and Thanksgiving sales exceed expectations, inventory declines rapidly.",en,1.0,2011,11,4
+2011-12-30,假日季后库存低位，补货压力上升但仍保持优化节奏。,zh,0.3333,2011,12,4
+2012-02-10,"Super Bowl promotions show moderate growth, inventory levels healthy.",en,1.0,2012,2,1
+2012-04-20,油价上涨推高物流成本，零售商面临库存成本压力。,zh,-1.0,2012,4,2
+2012-07-15,"Walmart announces price rollback strategy, demand uncertainty remains.",en,-1.0,2012,7,3
+2012-09-07,劳动节促销带动销售回升，库存可视化系统改善缺货响应。,zh,0.0,2012,9,3
+2012-11-01,进入假日季，需求预测偏乐观，部分门店库存水位偏高。,zh,0.0,2012,11,4
